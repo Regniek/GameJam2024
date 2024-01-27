@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SettingPlayersScene.unity
     guid: 7a4c5a8284ad1124d99dc49eaa4f7941
+  - enabled: 1
+    path: Assets/Scenes/ApiJokes.unity
+    guid: 52b20b47bf5971b47b5bbf2794ecdc39
   m_configObjects: {}
