@@ -6,14 +6,17 @@ using TMPro;
 using SimpleJSON;
 using System.IO;
 using ReadSpeaker;
+using System;
 
 public class GenerateJokesScript : MonoBehaviour
 {
     public Button GenerateJokes; // Asigna el botón en el Inspector
     public TextMeshProUGUI DialogText; // Asigna el TextMesh en el Inspector
+    public TextMeshProUGUI score;
     public TTSSpeaker speaker;
     public float delay;
     public bool repeat = false ;
+    public int scoreInNumber = 0 ;
 
     private string apiKey = System.Environment.GetEnvironmentVariable("API_KEY");
     private string apiUrl = System.Environment.GetEnvironmentVariable("API_URL");
@@ -74,11 +77,7 @@ public class GenerateJokesScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("request:" + request.downloadHandler.text);
             JSONNode data = JSON.Parse(request.downloadHandler.text);
-            Debug.Log("data:" + data);
-
-
             DialogText.text = data["data"]["description"];
             TTS.Say(data["data"]["description"], speaker);
             if (repeat == true )
@@ -92,10 +91,9 @@ public class GenerateJokesScript : MonoBehaviour
 
     private IEnumerator EsperarYContinuar()
     {
-        Debug.Log("Inicio de la espera");
-
         yield return new WaitForSeconds(20f);
+        scoreInNumber++;
+        score.text = scoreInNumber.ToString();
         CallApi();
-        Debug.Log("Después de esperar 20 segundos, continúa aquí");
     }
 }
