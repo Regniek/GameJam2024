@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
+  m_IndirectSpecularColor: {r: 0.37089851, g: 0.3783701, b: 0.3572253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -619,6 +619,11 @@ MonoBehaviour:
   player2Input: {fileID: 2077486678}
   player3Input: {fileID: 1554262084}
   player4Input: {fileID: 2020234645}
+  PlayButtonText: {fileID: 1339495911}
+  PlayerOneText: {fileID: 1347061366}
+  PlayerTwoText: {fileID: 827954463}
+  PlayerThreeText: {fileID: 1734009662}
+  PlayerFourText: {fileID: 2119178658}
 --- !u!1 &759564210
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class LoadPlayers : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class LoadPlayers : MonoBehaviour
     public TextMeshProUGUI player2Text;
     public TextMeshProUGUI player3Text;
     public TextMeshProUGUI player4Text;
+
+    public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI DialogText;
+    public TextMeshProUGUI PlayButtonText;
 
     void Start()
     {
@@ -23,5 +28,23 @@ public class LoadPlayers : MonoBehaviour
         player2Text.text = player2Value;
         player3Text.text = player3Value;
         player4Text.text = player4Value;
+        UpdateLangInterface();
+
+    }
+    void UpdateLangInterface()
+    {
+        string lang = PlayerPrefs.GetString("lang");
+        if (lang == "es")
+        {
+            ScoreText.text = "Puntaje";
+            DialogText.text = "Prepárense...\n\nEl objetivo es cumplir el reto sin reírse";
+            PlayButtonText.text = "EMPIEZA EL RETO";
+        }
+        else
+        {
+            ScoreText.text = "Score";
+            DialogText.text = "Get ready...\n\nThe goal is to complete the challenge without laughing";
+            PlayButtonText.text = "START CHALLENGE";
+        }
     }
 }

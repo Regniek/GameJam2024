@@ -9,6 +9,11 @@ public class PlayersNamesManager : MonoBehaviour
     public TMP_InputField player2Input;
     public TMP_InputField player3Input;
     public TMP_InputField player4Input;
+    public TextMeshProUGUI PlayButtonText;
+    public TextMeshProUGUI PlayerOneText;
+    public TextMeshProUGUI PlayerTwoText;
+    public TextMeshProUGUI PlayerThreeText;
+    public TextMeshProUGUI PlayerFourText;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +28,28 @@ public class PlayersNamesManager : MonoBehaviour
         player2Input.text = player2Value;
         player3Input.text = player3Value;
         player4Input.text = player4Value;
+
+        UpdateLangInterface();
+    }
+    void UpdateLangInterface()
+    {
+        string lang = PlayerPrefs.GetString("lang");
+        if (lang == "es")
+        {
+            PlayButtonText.text = "Jugar";
+            PlayerOneText.text = "Nombre del Jugador ...";
+            PlayerTwoText.text = "Nombre del Jugador ...";
+            PlayerThreeText.text = "Nombre del Jugador ...";
+            PlayerFourText.text = "Nombre del Jugador ...";
+}
+        else
+        {
+            PlayButtonText.text = "Play";
+            PlayerOneText.text = "Player name ...";
+            PlayerTwoText.text = "Player name ...";
+            PlayerThreeText.text = "Player name ...";
+            PlayerFourText.text = "Player name ...";
+        }
     }
 
 }
