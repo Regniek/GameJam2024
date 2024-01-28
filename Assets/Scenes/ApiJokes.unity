@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -177,6 +177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GenerateJokes: {fileID: 19138124}
   DialogText: {fileID: 229478049}
+  speaker: {fileID: 1206447076}
+  delay: 1
 --- !u!114 &19138124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1194,6 +1196,7 @@ GameObject:
   - component: {fileID: 1206447074}
   - component: {fileID: 1206447073}
   - component: {fileID: 1206447072}
+  - component: {fileID: 1206447076}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -1340,6 +1343,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1206447076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206447071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 874590486, guid: 439c254608823664789289c8015c560d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characteristics:
+    engineID: Adam Q22
+    volume: 250
+    pitch: 100
+    speed: 100
+    pause: 0
+    commaPause: 0
+  preset: {fileID: 0}
+  usePreset: 0
+  audioSource: {fileID: 1206447072}
 --- !u!1 &1217539867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,6 +1605,7 @@ GameObject:
   - component: {fileID: 1513846706}
   - component: {fileID: 1513846708}
   - component: {fileID: 1513846707}
+  - component: {fileID: 1513846709}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1655,6 +1681,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513846705}
   m_CullTransparentMesh: 1
+--- !u!114 &1513846709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513846705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8434a08f24a9f4fbcda1573edeb26c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speaker: {fileID: 1206447076}
+  initiallySelectable: {fileID: 0}
+  delay: 0
 --- !u!1 &1529542143
 GameObject:
   m_ObjectHideFlags: 0

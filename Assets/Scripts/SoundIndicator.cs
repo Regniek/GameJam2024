@@ -30,15 +30,13 @@ public class SoundIndicator : MonoBehaviour
         float volumenActual = detector.GetLoudnessFromMicrophone() * loudnessSensibility;
 
         float nuevaAltura = Mathf.Lerp(indicador.sizeDelta.y, volumenActual * contenedor.sizeDelta.y, Time.deltaTime * velocidadAnimacion);
-        Debug.Log("Altura" + nuevaAltura);
-        Debug.Log("threshold" + threshold);
+      
 
         indicador.sizeDelta = new Vector2(indicador.sizeDelta.x, nuevaAltura);
 
 
         if (volumenActual > 1.3)
         {
-            Debug.Log("volumenActual" + volumenActual);
             AccionCuandoSonidoFuerte();
         }
     }

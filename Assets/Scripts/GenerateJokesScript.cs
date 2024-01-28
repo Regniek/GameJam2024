@@ -5,12 +5,14 @@ using UnityEngine.Networking;
 using TMPro;
 using SimpleJSON;
 using System.IO;
-
+using ReadSpeaker;
 
 public class GenerateJokesScript : MonoBehaviour
 {
     public Button GenerateJokes; // Asigna el botón en el Inspector
     public TextMeshProUGUI DialogText; // Asigna el TextMesh en el Inspector
+    public TTSSpeaker speaker;
+    public float delay;
 
     private string apiKey = System.Environment.GetEnvironmentVariable("API_KEY");
     private string apiUrl = System.Environment.GetEnvironmentVariable("API_URL");
@@ -59,6 +61,9 @@ public class GenerateJokesScript : MonoBehaviour
 
 
             DialogText.text = data["data"]["description"];
+            TTS.Say(data["data"]["description"], speaker);
+            yield return new WaitUntil(() => speaker.audioSource.isPlaying);
+            yield return new WaitForSeconds(delay);
         }
     }
 }
