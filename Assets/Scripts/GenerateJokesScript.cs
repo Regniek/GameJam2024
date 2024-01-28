@@ -13,6 +13,7 @@ public class GenerateJokesScript : MonoBehaviour
     public TextMeshProUGUI DialogText; // Asigna el TextMesh en el Inspector
     public TTSSpeaker speaker;
     public float delay;
+    public bool repeat = false ;
 
     private string apiKey = System.Environment.GetEnvironmentVariable("API_KEY");
     private string apiUrl = System.Environment.GetEnvironmentVariable("API_URL");
@@ -23,7 +24,8 @@ public class GenerateJokesScript : MonoBehaviour
     {
         LoadConfigurations();
         Button btn = GetComponent<Button>();
-        btn.onClick.AddListener(CallApi);
+        btn.onClick.AddListener(initializeGame);
+
     }
 
     void LoadConfigurations()
@@ -36,9 +38,26 @@ public class GenerateJokesScript : MonoBehaviour
     }
     void CallApi()
     {
-        Debug.Log("I call api");
         StartCoroutine("MakeApiRequest");
-        
+    }
+
+    void initializeGame()
+    {
+        repeat = true;
+        CallApi();
+        OcultarBoton();
+    }
+
+    public void OcultarBoton()
+    {
+        Button btn = GetComponent<Button>();
+        btn.transform.localScale = Vector3.zero;
+    }
+
+    public void MostrarBoton()
+    {
+        Button btn = GetComponent<Button>();
+        btn.transform.localScale = Vector3.one;
     }
 
     IEnumerator MakeApiRequest()
@@ -62,8 +81,21 @@ public class GenerateJokesScript : MonoBehaviour
 
             DialogText.text = data["data"]["description"];
             TTS.Say(data["data"]["description"], speaker);
+            if (repeat == true )
+            {
+                StartCoroutine(EsperarYContinuar());
+            }
             yield return new WaitUntil(() => speaker.audioSource.isPlaying);
             yield return new WaitForSeconds(delay);
         }
+    }
+
+    private IEnumerator EsperarYContinuar()
+    {
+        Debug.Log("Inicio de la espera");
+
+        yield return new WaitForSeconds(20f);
+        CallApi();
+        Debug.Log("Después de esperar 20 segundos, continúa aquí");
     }
 }
