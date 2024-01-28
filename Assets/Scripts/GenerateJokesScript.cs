@@ -16,6 +16,7 @@ public class GenerateJokesScript : MonoBehaviour
     public TTSSpeaker speaker;
     public float delay;
     public bool repeat = false ;
+    public AudioLoudnessDetection detector;
     public int scoreInNumber = 0 ;
     public string lang;
     public string category = "/general";
@@ -94,11 +95,16 @@ public class GenerateJokesScript : MonoBehaviour
             }
             yield return new WaitUntil(() => speaker.audioSource.isPlaying);
             yield return new WaitForSeconds(delay);
+            detector.MicriphoneToAudioClip();
         }
     }
 
     private IEnumerator EsperarYContinuar()
     {
+        Debug.Log("Inicio de la espera");
+      
+        yield return new WaitForSeconds(20f);
+        detector.StopMicrophone();
         yield return new WaitForSeconds(20f);
         scoreInNumber++;
         score.text = scoreInNumber.ToString();

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -179,8 +179,9 @@ MonoBehaviour:
   DialogText: {fileID: 229478049}
   score: {fileID: 1587861975}
   speaker: {fileID: 1206447076}
-  delay: 1
+  delay: 2
   repeat: 0
+  detector: {fileID: 1206447073}
   scoreInNumber: 0
 --- !u!114 &19138124
 MonoBehaviour:
@@ -226,18 +227,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206447073}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 1
       - m_Target: {fileID: 1217539867}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -1444,7 +1433,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206447071}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5bd9b7cf5db2da4dbff8e667414b270, type: 3}
   m_Name: 
@@ -1457,7 +1446,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206447071}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 816500545ca9acb4ba1ecfc089fc9c8b, type: 3}
   m_Name: 
@@ -1497,8 +1486,8 @@ MonoBehaviour:
     volume: 121
     pitch: 66
     speed: 98
-    pause: 7156
-    commaPause: 4539
+    pause: 500
+    commaPause: 24267
   preset: {fileID: 0}
   usePreset: 0
   audioSource: {fileID: 1206447072}

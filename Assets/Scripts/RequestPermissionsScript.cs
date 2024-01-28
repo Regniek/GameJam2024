@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
-
+using ReadSpeaker;
 public class RequestPermissionScript : MonoBehaviour
 {
     internal void PermissionCallbacks_PermissionDeniedAndDontAskAgain(string permissionName)
@@ -22,6 +22,8 @@ public class RequestPermissionScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TTS.Init();
+
         if (Permission.HasUserAuthorizedPermission(Permission.Microphone))
         {
             // The user authorized use of the microphone.
