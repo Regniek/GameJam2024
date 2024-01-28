@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bd9b7cf5db2da4dbff8e667414b270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sampleWindow: 1024
+  sampleWindow: 64
 --- !u!114 &1206447074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1357,11 +1357,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characteristics:
     engineID: Adam Q22
-    volume: 121
-    pitch: 66
-    speed: 98
-    pause: 7156
-    commaPause: 4539
+    volume: 250
+    pitch: 100
+    speed: 100
+    pause: 0
+    commaPause: 0
   preset: {fileID: 0}
   usePreset: 0
   audioSource: {fileID: 1206447072}
