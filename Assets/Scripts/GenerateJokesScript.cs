@@ -14,6 +14,7 @@ public class GenerateJokesScript : MonoBehaviour
     public TTSSpeaker speaker;
     public float delay;
     public bool repeat = false ;
+    public AudioLoudnessDetection detector;
 
     private string apiKey = System.Environment.GetEnvironmentVariable("API_KEY");
     private string apiUrl = System.Environment.GetEnvironmentVariable("API_URL");
@@ -22,6 +23,7 @@ public class GenerateJokesScript : MonoBehaviour
 
     void Start()
     {
+        TTS.Init();
         LoadConfigurations();
         Button btn = GetComponent<Button>();
         btn.onClick.AddListener(initializeGame);
@@ -87,14 +89,16 @@ public class GenerateJokesScript : MonoBehaviour
             }
             yield return new WaitUntil(() => speaker.audioSource.isPlaying);
             yield return new WaitForSeconds(delay);
+            detector.MicriphoneToAudioClip();
         }
     }
 
     private IEnumerator EsperarYContinuar()
     {
         Debug.Log("Inicio de la espera");
-
+      
         yield return new WaitForSeconds(20f);
+        detector.StopMicrophone();
         CallApi();
         Debug.Log("Después de esperar 20 segundos, continúa aquí");
     }
