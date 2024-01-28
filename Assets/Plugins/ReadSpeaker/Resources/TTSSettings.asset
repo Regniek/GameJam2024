@@ -16,4 +16,4 @@ MonoBehaviour:
     exportFlagsDict:
       keys: []
       values: []
-    loggingLevel: 1
+    loggingLevel: 0
