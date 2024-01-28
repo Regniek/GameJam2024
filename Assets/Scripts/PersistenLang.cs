@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class PersistenLang : MonoBehaviour
 {
-    public Button ChangeLang; // Asigna el botón en el Inspector
-    public TextMeshProUGUI Lang; // Asigna el TextMesh en el Inspector
+    public Button ChangeLang;
+    public TextMeshProUGUI PlayButtonText;
+    public TextMeshProUGUI ChangeLangText;
+    public TextMeshProUGUI Lang; 
 
     public string lang = "en";
     public string langText = "English";
@@ -32,11 +34,19 @@ public class PersistenLang : MonoBehaviour
             Lang.text = langText;
             PlayerPrefs.SetString("lang", lang);
         }
+        ChangeLangInterface();
     }
 
-    // Update is called once per frame
-    void Update()
+    void ChangeLangInterface()
     {
-        
+        if (Lang.text == "English")
+        {
+            PlayButtonText.text = "Play";
+            ChangeLangText.text = "Change";
+        }else
+        {
+            PlayButtonText.text = "Jugar";
+            ChangeLangText.text = "Cambiar";
+        }
     }
 }

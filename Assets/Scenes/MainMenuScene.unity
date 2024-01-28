@@ -471,6 +471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChangeLang: {fileID: 1354903863}
+  PlayButtonText: {fileID: 1339495911}
+  ChangeLangText: {fileID: 2084805658}
   Lang: {fileID: 1197937574}
   lang: en
   langText: English
