@@ -13,6 +13,20 @@ public class CatchNamesPlayers : MonoBehaviour
     public TMP_InputField player3Input;
     public TMP_InputField player4Input;
 
+    private Animator animator;
+
+    public void Start()
+    {
+        
+        animator = GetComponent<Animator>();
+
+        
+        if (animator != null)
+        {
+            animator.Play("Idle-CHW1");
+        }
+    }
+
     public void GetInputValuesAndChangeScene()
     {
         string player1Value = player1Input.text;
