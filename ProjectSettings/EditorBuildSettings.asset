@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ApiJokes.unity
     guid: 52b20b47bf5971b47b5bbf2794ecdc39
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 08b627f8534a2f74b9e8da1d7af05128
   m_configObjects: {}
