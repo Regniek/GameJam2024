@@ -14,6 +14,7 @@ public class GenerateJokesScript : MonoBehaviour
 
     private string apiKey = System.Environment.GetEnvironmentVariable("API_KEY");
     private string apiUrl = System.Environment.GetEnvironmentVariable("API_URL");
+    
 
 
     void Start()
@@ -25,20 +26,11 @@ public class GenerateJokesScript : MonoBehaviour
 
     void LoadConfigurations()
     {
-        string configPath = Path.Combine(Application.dataPath, "../config.json");
-
-        if (File.Exists(configPath))
-        {
-            string json = File.ReadAllText(configPath);
-            JSONNode configData = JSON.Parse(json);
-
-            apiKey = configData["API_KEY"];
-            apiUrl = configData["API_URL"];
-        }
-        else
-        {
-            Debug.LogError("Archivo config.json no encontrado");
-        }
+        TextAsset targetFile = Resources.Load<TextAsset>("config");
+        string json = targetFile.text;
+        JSONNode configData = JSON.Parse(json);
+        apiKey = configData["API_KEY"];
+        apiUrl = configData["API_URL"];
     }
     void CallApi()
     {
