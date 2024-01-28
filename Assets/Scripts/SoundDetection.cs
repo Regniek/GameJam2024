@@ -13,7 +13,7 @@ public class SoundDetection : MonoBehaviour
     {
         float volumenActual = detector.GetLoudnessFromMicrophone() * loudnessSensibility;
 
-        if (volumenActual > threshold)
+        if (volumenActual > 1.2)
         {
             AccionCuandoSonidoFuerte();
         }
