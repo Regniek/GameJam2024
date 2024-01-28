@@ -17,6 +17,10 @@ public class GenerateJokesScript : MonoBehaviour
     public float delay;
     public bool repeat = false ;
     public int scoreInNumber = 0 ;
+    public string lang;
+    public string category = "/general";
+    public string type = "/challenge";
+    public string endpoint = "/random";
 
     private string apiKey = System.Environment.GetEnvironmentVariable("API_KEY");
     private string apiUrl = System.Environment.GetEnvironmentVariable("API_URL");
@@ -25,6 +29,7 @@ public class GenerateJokesScript : MonoBehaviour
 
     void Start()
     {
+        lang = PlayerPrefs.GetString("lang");
         LoadConfigurations();
         Button btn = GetComponent<Button>();
         btn.onClick.AddListener(initializeGame);
@@ -65,7 +70,9 @@ public class GenerateJokesScript : MonoBehaviour
 
     IEnumerator MakeApiRequest()
     {
-        UnityWebRequest request = UnityWebRequest.Get(apiUrl);
+        string url = apiUrl + category +"/"+ lang + type + endpoint;
+        Debug.Log(url);
+        UnityWebRequest request = UnityWebRequest.Get(url);
         request.SetRequestHeader("X-API-KEY", apiKey);
   
 
@@ -78,6 +85,7 @@ public class GenerateJokesScript : MonoBehaviour
         else
         {
             JSONNode data = JSON.Parse(request.downloadHandler.text);
+            Debug.Log(data["data"]["description"]);
             DialogText.text = data["data"]["description"];
             TTS.Say(data["data"]["description"], speaker);
             if (repeat == true )
