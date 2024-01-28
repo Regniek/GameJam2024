@@ -17,7 +17,6 @@ public class CatchNamesPlayers : MonoBehaviour
 
     public void Start()
     {
-        
         animator = GetComponent<Animator>();
 
         
@@ -49,5 +48,6 @@ public class CatchNamesPlayers : MonoBehaviour
     {
         // Cambiar a la otra escena
         SceneManager.LoadScene(2);
+        GameObject.FindGameObjectWithTag("Music").GetComponent<KeepAudio>().StopMusic();
     }
 }

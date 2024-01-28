@@ -43,6 +43,7 @@ public class SoundIndicator : MonoBehaviour
 
     void AccionCuandoSonidoFuerte()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<KeepAudio>().PlayMusic();
         SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
         detector.StopMicrophone();
     }
