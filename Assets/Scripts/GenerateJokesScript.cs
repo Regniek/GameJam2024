@@ -6,14 +6,22 @@ using TMPro;
 using SimpleJSON;
 using System.IO;
 using ReadSpeaker;
+using System;
 
 public class GenerateJokesScript : MonoBehaviour
 {
     public Button GenerateJokes; // Asigna el botón en el Inspector
     public TextMeshProUGUI DialogText; // Asigna el TextMesh en el Inspector
+    public TextMeshProUGUI score;
     public TTSSpeaker speaker;
     public float delay;
     public bool repeat = false ;
+    public AudioLoudnessDetection detector;
+    public int scoreInNumber = 0 ;
+    public string lang;
+    public string category = "/general";
+    public string type = "/challenge";
+    public string endpoint = "/random";
 
     private string apiKey = System.Environment.GetEnvironmentVariable("API_KEY");
     private string apiUrl = System.Environment.GetEnvironmentVariable("API_URL");
@@ -22,6 +30,7 @@ public class GenerateJokesScript : MonoBehaviour
 
     void Start()
     {
+        lang = PlayerPrefs.GetString("lang");
         LoadConfigurations();
         Button btn = GetComponent<Button>();
         btn.onClick.AddListener(initializeGame);
@@ -62,7 +71,9 @@ public class GenerateJokesScript : MonoBehaviour
 
     IEnumerator MakeApiRequest()
     {
-        UnityWebRequest request = UnityWebRequest.Get(apiUrl);
+        string url = apiUrl + category +"/"+ lang + type + endpoint;
+        Debug.Log(url);
+        UnityWebRequest request = UnityWebRequest.Get(url);
         request.SetRequestHeader("X-API-KEY", apiKey);
   
 
@@ -74,11 +85,8 @@ public class GenerateJokesScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("request:" + request.downloadHandler.text);
             JSONNode data = JSON.Parse(request.downloadHandler.text);
-            Debug.Log("data:" + data);
-
-
+            Debug.Log(data["data"]["description"]);
             DialogText.text = data["data"]["description"];
             TTS.Say(data["data"]["description"], speaker);
             if (repeat == true )
@@ -87,15 +95,19 @@ public class GenerateJokesScript : MonoBehaviour
             }
             yield return new WaitUntil(() => speaker.audioSource.isPlaying);
             yield return new WaitForSeconds(delay);
+            detector.MicriphoneToAudioClip();
         }
     }
 
     private IEnumerator EsperarYContinuar()
     {
         Debug.Log("Inicio de la espera");
-
+      
         yield return new WaitForSeconds(20f);
+        detector.StopMicrophone();
+        yield return new WaitForSeconds(20f);
+        scoreInNumber++;
+        score.text = scoreInNumber.ToString();
         CallApi();
-        Debug.Log("Después de esperar 20 segundos, continúa aquí");
     }
 }

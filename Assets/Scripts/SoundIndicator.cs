@@ -35,7 +35,7 @@ public class SoundIndicator : MonoBehaviour
         indicador.sizeDelta = new Vector2(indicador.sizeDelta.x, nuevaAltura);
 
 
-        if (volumenActual > 1.3)
+        if (nuevaAltura > 107)
         {
             AccionCuandoSonidoFuerte();
         }
